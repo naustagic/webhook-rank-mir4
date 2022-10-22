@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "mi4-webhook"
+version = "0.2.0"
+description = "Poll the Mir4 api and send webhook alerts"
+authors = ["Your Name <you@example.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "mi4_webhook"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+requests = "^2.28.1"
+discord-webhook = "^0.17.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

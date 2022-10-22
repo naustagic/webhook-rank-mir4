@@ -1,11 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-import dataclasses
 from typing import List, Type
-
-
-
 
 
 @dataclass
@@ -39,6 +35,7 @@ class Player:
     id: str
     power: str
     global_rank: str
+    most_recent: str
     name: str
     tao_res: str
     alliance_id: str
@@ -54,6 +51,7 @@ class Player:
         _id = data.get("id")
         _power = data.get("power")
         _global_rank = data.get("global_rank")
+        _most_recent = data.get("most_recent")
         _name = data.get("name")
         _tao_res = data.get("tao_res")
         _alliance_id = data.get("alliance_id")
@@ -63,6 +61,7 @@ class Player:
             id=_id,
             power=_power,
             global_rank=_global_rank,
+            most_recent=_most_recent,
             name=_name,
             tao_res=_tao_res,
             alliance_id=_alliance_id,
@@ -100,7 +99,7 @@ class Guild:
         _lancers = data.get("lancers")
         _name = data.get("name")
         server = Server.from_dict(data.get("server"))
-        roster = [Player.from_dict(v) for k, v in data.get("roster").items()]
+        roster = [Player.from_dict(v) for _, v in data.get("roster").items()]
 
         return cls(
             id=_id,
@@ -116,12 +115,3 @@ class Guild:
             server=server,
             roster=roster,
         )
-
-
-if __name__ == '__main__':
-
-
-   # guild = Guild.from_dict(data)
-    print(guild.name)  # UNFORGIVEN 乡
-    print(guild.power) # 8603001
-    print(guild.roster[1]) # Player(id='1229507', power='200253', global_rank='2136', name='eoDigs', tao_res=None, alliance_id='0', _class=Class(id='2', name='Sorcerer'))
